@@ -1,0 +1,33 @@
+{
+  "name": "university-library-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node -r tsconfig-paths/register src/main.ts",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "rodjosh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "eslint": "^8.30.0",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-http": "^1.10.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.1"
+  },
+  "devDependencies": {
+    "@eslint/create-config": "0.4.1",
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
+  }
+}
