@@ -19,6 +19,7 @@ interface User
   email: string;
   role: "student" | "librarian";
   requested_book_ids: string[];
+  password: string;
 }
 
 export const User = sequelize.define<User>(
@@ -27,9 +28,18 @@ export const User = sequelize.define<User>(
     id: modelIdField,
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
-    email: DataTypes.STRING,
     role: DataTypes.ENUM("student", "librarian"),
     requested_book_ids: DataTypes.ARRAY(DataTypes.STRING),
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      defaultValue: "",
+      allowNull: false,
+    },
   },
   {
     indexes: [
