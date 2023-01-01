@@ -11,6 +11,7 @@ import {
   getAllUsers,
   getUser,
 } from "@src/database/controllers/user";
+
 import { userType } from "@src/graphql/types/user";
 
 export const qUsers: GraphQLFieldConfig<any, any> = {

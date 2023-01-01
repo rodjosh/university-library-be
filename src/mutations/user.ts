@@ -1,10 +1,11 @@
 import { GraphQLFieldConfig, GraphQLNonNull, GraphQLString } from "graphql";
+import { userType } from "@src/graphql/types/user";
+
 import {
   createUser,
   deleteUser,
   updateUser,
 } from "@src/database/controllers/user";
-import { userType } from "@src/graphql/types/user";
 
 export const mCreateUser: GraphQLFieldConfig<any, any> = {
   type: userType,
