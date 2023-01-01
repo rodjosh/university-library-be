@@ -12,9 +12,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "paths": {
-      "@src/*": ["src/*"],
+      "@src/*": ["src/*"]
     }
   },
   "include": ["src"],

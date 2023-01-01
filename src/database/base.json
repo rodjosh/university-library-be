@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "first_name": "Test",
+      "last_name": "1",
+      "email": "test@gmail.com",
+      "role": "librarian",
+      "password": "1234"
+    }, {
+      "first_name": "Test",
+      "last_name": "2",
+      "email": "test2@gmail.com",
+      "role": "student",
+      "password": "1234"
+    }
+  ],
+  "books": [
+    {
+      "title": "Book 1",
+      "author": "Test Author",
+      "published_year": 2022,
+      "genre": "novel",
+      "available_copies": 5
+    }, {
+      "title": "Book 2",
+      "author": "Test Author",
+      "published_year": 2022,
+      "genre": "novel",
+      "available_copies": 5
+    }
+  ]
+}
