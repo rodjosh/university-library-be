@@ -5,6 +5,7 @@ export interface UserInterface {
   email: string;
   role: "student" | "librarian";
   requested_book_ids: string[];
+  password: string;
 }
 
 export interface BookInterface {

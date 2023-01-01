@@ -7,6 +7,7 @@ interface CreateUserProps {
   last_name: string;
   email: string;
   role: "student" | "librarian";
+  password: string;
 }
 
 export const createUser = async (attrs: CreateUserProps) => {

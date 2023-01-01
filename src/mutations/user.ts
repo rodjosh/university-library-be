@@ -14,13 +14,15 @@ export const mCreateUser: GraphQLFieldConfig<any, any> = {
     last_name: { type: new GraphQLNonNull(GraphQLString) },
     email: { type: new GraphQLNonNull(GraphQLString) },
     role: { type: new GraphQLNonNull(GraphQLString) },
+    password: { type: new GraphQLNonNull(GraphQLString) },
   },
-  resolve: async (obj, { first_name, last_name, email, role }) => {
+  resolve: async (obj, { first_name, last_name, email, role, password }) => {
     return await createUser({
       first_name,
       last_name,
       email,
       role,
+      password,
     });
   },
 };
@@ -33,6 +35,7 @@ export const mUpdateUser: GraphQLFieldConfig<any, any> = {
     last_name: { type: GraphQLString },
     email: { type: GraphQLString },
     role: { type: GraphQLString },
+    password: { type: GraphQLString },
   },
   resolve: async (obj, { user_id, ...attrs }) => {
     return await updateUser(user_id, attrs);
