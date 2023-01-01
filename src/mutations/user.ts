@@ -4,6 +4,7 @@ import { userType } from "@src/graphql/types/user";
 import {
   createUser,
   deleteUser,
+  loginUser,
   updateUser,
 } from "@src/database/controllers/user";
 
@@ -39,6 +40,17 @@ export const mUpdateUser: GraphQLFieldConfig<any, any> = {
   },
   resolve: async (obj, { user_id, ...attrs }) => {
     return await updateUser(user_id, attrs);
+  },
+};
+
+export const mLoginUser: GraphQLFieldConfig<any, any> = {
+  type: userType,
+  args: {
+    email: { type: new GraphQLNonNull(GraphQLString) },
+    password: { type: new GraphQLNonNull(GraphQLString) },
+  },
+  resolve: async (obj, { email, password }) => {
+    return await loginUser(email, password);
   },
 };
 

@@ -47,6 +47,15 @@ export const getAllStudents = async (offset?: number, limit?: number) => {
   });
 };
 
+export const loginUser = async (email: string, password: string) => {
+  return await User.findOne({
+    where: {
+      email: { [Op.eq]: email },
+      password: { [Op.eq]: password },
+    },
+  });
+};
+
 export const deleteUser = async (id: string) => {
   const user = await User.findByPk(id);
   if (!user) return;

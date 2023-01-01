@@ -1,4 +1,9 @@
-import { mCreateUser, mUpdateUser, mDeleteUser } from "@src/mutations/user";
+import {
+  mCreateUser,
+  mUpdateUser,
+  mLoginUser,
+  mDeleteUser,
+} from "@src/mutations/user";
 
 import {
   mCreateBook,
@@ -11,6 +16,7 @@ import {
 export const mutations = {
   mCreateUser,
   mUpdateUser,
+  mLoginUser,
   mDeleteUser,
 
   mCreateBook,
