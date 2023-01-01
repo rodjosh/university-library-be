@@ -1,4 +1,6 @@
-import { GraphQLSchema, GraphQLObjectType, GraphQLString } from "graphql";
+import { GraphQLSchema, GraphQLObjectType } from "graphql";
+import { mutations } from "@src/mutations";
+import { queries } from "@src/queries";
 
 /**
  * Construct a GraphQL schema and define the necessary resolvers.
@@ -8,33 +10,17 @@ import { GraphQLSchema, GraphQLObjectType, GraphQLString } from "graphql";
  * }
  */
 
-const testType = new GraphQLObjectType({
-  name: "Test",
-  fields: {
-    first: {
-      type: GraphQLString,
-    },
-    second: {
-      type: GraphQLString,
-    },
-  },
-});
-
 export const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: "Query",
     fields: {
-      hello: {
-        type: GraphQLString,
-        resolve: () => "world",
-      },
-      test: {
-        type: testType,
-        resolve: () => ({
-          first: "Hello World first",
-          second: "Hello World second",
-        }),
-      },
+      ...queries,
+    },
+  }),
+  mutation: new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+      ...mutations,
     },
   }),
 });
