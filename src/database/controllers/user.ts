@@ -2,7 +2,7 @@ import { User } from "@src/database/models/user";
 import { UserInterface } from "@src/database/models/types";
 import { Op } from "sequelize";
 
-interface CreateUserProps {
+export interface CreateUserProps {
   first_name: string;
   last_name: string;
   email: string;

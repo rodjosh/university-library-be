@@ -6,8 +6,8 @@ import {
   CreationOptional,
 } from "sequelize";
 
-import { modelIdField } from "@src/database/utils";
 import { getSequelize } from "@src/database/init";
+import { modelIdField } from "@src/database/constants";
 
 const sequelize = getSequelize();
 

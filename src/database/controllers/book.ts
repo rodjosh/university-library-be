@@ -3,7 +3,7 @@ import { Book } from "@src/database/models/book";
 import { BookInterface } from "@src/database/models/types";
 import { User } from "@src/database/models/user";
 
-interface CreateBookProps {
+export interface CreateBookProps {
   title: string;
   author: string;
   published_year: number;

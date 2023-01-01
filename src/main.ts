@@ -5,7 +5,7 @@ import { createHandler } from "graphql-http/lib/use/express";
 
 import { schema } from "@src/graphql/schema";
 import { getSequelize } from "@src/database/init";
-import { syncAllModels } from "@src/database/utils";
+import { syncAllModels, syncAllModelsForce } from "@src/database/utils";
 import * as process from "process";
 
 const main = () => {
@@ -22,7 +22,8 @@ const init_database = async () => {
 
   try {
     await sequelize.authenticate();
-    await syncAllModels();
+    if (process.env.FORCE) await syncAllModelsForce();
+    else await syncAllModels();
     main();
   } catch (e) {
     console.log("Could not connect to database", e);

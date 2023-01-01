@@ -7,7 +7,7 @@ import {
 } from "sequelize";
 
 import { getSequelize } from "@src/database/init";
-import { modelIdField } from "@src/database/utils";
+import { modelIdField } from "@src/database/constants";
 
 const sequelize = getSequelize();
 
