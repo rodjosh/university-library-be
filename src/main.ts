@@ -1,4 +1,5 @@
 import "dotenv/config";
+import cors from "cors";
 import express from "express";
 import expressPlayground from "graphql-playground-middleware-express";
 import { createHandler } from "graphql-http/lib/use/express";
@@ -10,6 +11,8 @@ import * as process from "process";
 
 const main = () => {
   const app = express();
+  app.use(cors());
+
   app.all("/graphql", createHandler({ schema }));
   app.get("/playground", expressPlayground({ endpoint: "/graphql" }));
 
