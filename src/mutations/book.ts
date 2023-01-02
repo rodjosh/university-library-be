@@ -65,13 +65,13 @@ export const mDeleteBook: GraphQLFieldConfig<any, any> = {
 };
 
 export const mCheckoutBook: GraphQLFieldConfig<any, any> = {
-  type: GraphQLBoolean,
+  type: bookType,
   args: {
     book_id: { type: new GraphQLNonNull(GraphQLString) },
     student_id: { type: new GraphQLNonNull(GraphQLString) },
   },
   resolve: async (obj, { book_id, student_id }) => {
-    return (await checkoutBook(book_id, student_id)) ?? false;
+    return await checkoutBook(book_id, student_id);
   },
 };
 
