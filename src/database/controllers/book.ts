@@ -2,6 +2,9 @@ import { Op } from "sequelize";
 import { Book } from "@src/database/models/book";
 import { BookInterface } from "@src/database/models/types";
 import { User } from "@src/database/models/user";
+import { getSequelize } from "@src/database/init";
+
+const sequelize = getSequelize();
 
 export interface CreateBookProps {
   title: string;
@@ -55,16 +58,54 @@ export const getAllBooks = async (
     offset,
     limit,
     where: {
-      title: {
-        [Op.iLike]: `%${title ?? ""}%`,
-      },
-      author: {
-        [Op.iLike]: `%${author ?? ""}%`,
-      },
-      genre: {
-        [Op.iLike]: `%${genre ?? ""}%`,
-      },
+      title: { [Op.iLike]: `%${title ?? ""}%` },
+      author: { [Op.iLike]: `%${author ?? ""}%` },
+      genre: { [Op.iLike]: `%${genre ?? ""}%` },
     },
+  });
+};
+
+export const getBooksRequestedByStudent = async (
+  student_id: string,
+  offset?: number,
+  limit?: number,
+  title?: string,
+  author?: string,
+  genre?: string
+) => {
+  return await Book.findAll({
+    offset,
+    limit,
+    where: {
+      checkout_by_user_ids: { [Op.contains]: [student_id] },
+      title: { [Op.iLike]: `%${title ?? ""}%` },
+      author: { [Op.iLike]: `%${author ?? ""}%` },
+      genre: { [Op.iLike]: `%${genre ?? ""}%` },
+    },
+  });
+};
+
+export const getBooksRequestedByStudents = async (
+  offset?: number,
+  limit?: number,
+  title?: string,
+  author?: string,
+  genre?: string
+) => {
+  return await Book.findAll({
+    offset,
+    limit,
+    where: [
+      sequelize.where(
+        sequelize.fn("array_length", sequelize.col("checkout_by_user_ids"), 1),
+        { [Op.gt]: 0 }
+      ),
+      {
+        title: { [Op.iLike]: `%${title ?? ""}%` },
+        author: { [Op.iLike]: `%${author ?? ""}%` },
+        genre: { [Op.iLike]: `%${genre ?? ""}%` },
+      },
+    ],
   });
 };
 

@@ -1,5 +1,11 @@
 import { qUser, qUsers, qStudents } from "@src/queries/user";
-import { qBook, qBooks } from "@src/queries/book";
+
+import {
+  qBook,
+  qBooks,
+  qBooksRequestedByStudent,
+  qBooksRequestedByStudents,
+} from "@src/queries/book";
 
 export const queries = {
   qUser,
@@ -8,4 +14,6 @@ export const queries = {
 
   qBook,
   qBooks,
+  qBooksRequestedByStudent,
+  qBooksRequestedByStudents,
 };
