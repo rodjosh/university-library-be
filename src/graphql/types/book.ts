@@ -8,7 +8,7 @@ import {
 export const bookType = new GraphQLObjectType({
   name: "Book",
   fields: {
-    id: { type: GraphQLString },
+    _id: { type: GraphQLString },
     title: { type: GraphQLString },
     author: { type: GraphQLString },
     published_year: { type: GraphQLString },

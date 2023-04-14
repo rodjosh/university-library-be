@@ -73,9 +73,13 @@ export const updateBook = async (
   attrs: Partial<Omit<BookInterface, "_id">>
 ) => {
   const books = await getBooksCollection();
-  const book = await books.findOneAndUpdate({ _id: new ObjectId(id) }, attrs, {
-    returnDocument: "after",
-  });
+  const book = await books.findOneAndUpdate(
+    { _id: new ObjectId(id) },
+    { $set: { ...attrs } },
+    {
+      returnDocument: "after",
+    }
+  );
 
   return book.value;
 };
@@ -209,8 +213,9 @@ export const getBooksRequestedByStudents = async (
   const books = await getBooksCollection();
 
   const filter: StrictFilter<CreateBookProps> = {
-    $where: `this.checkout_by_user_ids.length > 0`,
+    checkout_by_user_ids: { $exists: true, $not: { $size: 0 } },
   };
+
   if (title) filter.title = { $regex: `.*${title}.*`, $options: "i" };
   if (author) filter.author = { $regex: `.*${author}.*`, $options: "i" };
   if (genre) filter.genre = { $regex: `.*${genre}.*`, $options: "i" };

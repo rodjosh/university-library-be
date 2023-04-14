@@ -130,6 +130,6 @@ export const loginUser = async (email: string, password: string) => {
 
 export const deleteUser = async (id: string) => {
   const users = await getUsersCollection();
-  const result = await users.deleteOne({ _id: new ObjectId(id) });
-  return result.deletedCount === 1;
+  const result = await users.findOneAndDelete({ _id: new ObjectId(id) });
+  return result.value;
 };
