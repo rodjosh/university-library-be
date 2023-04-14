@@ -39,6 +39,7 @@ const init_database = async () => {
   try {
     await getMongo();
     if (process.env.FORCE) await syncAllModelsForce();
+    main();
   } catch (e) {
     console.log("Could not connect to database", e);
     process.exit(1);

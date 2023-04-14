@@ -1,6 +1,6 @@
 // import { getSequelize } from "@src/database/init";
-// import { createUser, CreateUserProps } from "@src/database/controllers/user";
-// import { createBook, CreateBookProps } from "@src/database/controllers/book";
+import { createUser, CreateUserProps } from "@src/database/controllers/user";
+import { createBook, CreateBookProps } from "@src/database/controllers/book";
 import base from "@src/database/base.json";
 
 import { getBooksCollection } from "@src/database/models/book";
@@ -33,11 +33,11 @@ export const createBaseData = async () => {
   const books = base.books;
 
   for (const user of users) {
-    // await createUser(user as CreateUserProps);
+    await createUser(user as CreateUserProps);
   }
 
   for (const book of books) {
-    // await createBook(book as CreateBookProps);
+    await createBook(book as CreateBookProps);
   }
 
   console.log("All models were synchronized successfully.");

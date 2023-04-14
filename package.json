@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/main.ts",
-    "lint": "eslint .",
+    "lint": "eslint . && tsc --project tsconfig.json --noEmit --pretty",
     "format": "prettier --write ."
   },
   "keywords": [],

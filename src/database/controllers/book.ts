@@ -43,7 +43,7 @@ export const createBook = async ({
 }: CreateBookProps) => {
   const books = await getBooksCollection();
 
-  return await books.insertOne({
+  const result = await books.insertOne({
     title,
     author,
     published_year,
@@ -51,6 +51,9 @@ export const createBook = async ({
     available_copies,
     checkout_by_user_ids: [],
   });
+
+  const book = await books.findOne({ _id: new ObjectId(result.insertedId) });
+  return book;
 };
 
 // export const updateBook = async (
