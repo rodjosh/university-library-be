@@ -23,6 +23,7 @@
     "graphql": "^16.6.0",
     "graphql-http": "^1.10.0",
     "graphql-playground-middleware-express": "^1.7.23",
+    "mongodb": "^5.2.0",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.28.0",
